@@ -1,8 +1,7 @@
-#include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
+#include "MotorDriverLogic.h"
 
- 
 uint pwm_slice_num_forward;
 uint pwm_slice_num_backward;
 uint chan_in1;
@@ -23,7 +22,7 @@ void motor_init(int IN1_PIN, int IN2_PIN, int ENA_PIN) {
     pwm_set_wrap(pwm_slice_num_backward, 10000);
 }
 
-void motor_driver(int PWM, int motor_enable, int ENA_PIN) {
+void motor_driver(int PWM, int ENA_PIN, int motor_enable) {
     
     gpio_put(ENA_PIN, motor_enable);
 
